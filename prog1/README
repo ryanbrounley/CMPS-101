@@ -1,25 +1,5 @@
-Ryan Brounley, (ID: 1360826)
+Ryan Brounley
 CMPS 101, Winter 2015
-Programming Assignment 1
----------------------------------
-Included Files:
----------------------------------
-List.java
-
- List.java contains a double linked List data structure specified to handle integer
- inputs. It exists to allow the storing of information and allow ease in sort in
- as this information is added.
-
-ListClient.java
- 
- Supplied by Professor Tantalo, this class exists to test the functionality and performance
- of the List ADT by acting as a test harness and providing a set of known inputs and outputs
- to various List functions to confirm intended functionality is exhibited.
-
-Lex.java
- 
- Written by Ryan Brounley, this file accepts two arguments (one filled with strings) and the other for an  output file. It writes the strings into an array and then it runs my Ryan Connors, (ID: XXXXXX)
-CMPS 101, <insert quarter here>
 Programming Assignment 1
 ---------------------------------
 Included Files:

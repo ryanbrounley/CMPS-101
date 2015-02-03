@@ -1,7 +1,3 @@
-//Ryan Brounley
-//rbrounle@ucsc.edu
-//CMPS 101
-
 import java.io.*;
 import java.util.Scanner;
    
