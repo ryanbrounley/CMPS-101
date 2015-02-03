@@ -1,0 +1,69 @@
+//Ryan Brounley
+//rbrounle@ucsc.edu
+//CMPS 101
+
+import java.io.*;
+import java.util.Scanner;
+   
+class Lex{
+   public static void main(String[] args) throws IOException{
+      Scanner in = null;
+      PrintWriter out = null;
+      String line = null;
+      String[] lineArray = null;
+      int i, n, lineNumber = 0;
+      List lex = new List();
+      
+      //reports to stderr if more or less than 2 arguments
+      if(args.length != 2){
+         System.err.println("Incorrect Number of arguments");
+         System.exit(1);
+      }
+      
+      in = new Scanner(new File(args[0]));
+      out = new PrintWriter(new FileWriter(args[1]));
+      
+      //inputs values of filein into a string array and records how long it is.
+      while( in.hasNextLine() ){
+         lineNumber++;
+         line = in.nextLine()+" ";    // add extra space so split works right
+         lineArray = line.split("\\s+");  // split line around white space
+         n = lineArray.length;
+       //System.out.println("Line "+lineNumber+" contains "+n+" token"+(n==1?"":"s")+":");
+      }
+      
+      //call lexSort which sorts the indices according to array
+      lex = lexSort(lineArray);
+
+      //prints the values of lexSort indices as they are in lineArray
+      for(i=0; i<lineArray.length; i++){
+	  System.out.println(lineArray[lex.getElement()]);
+      }
+
+      in.close();
+      out.close();
+   }
+
+   public static List lexSort(String [] lineArray){
+       List lex = new List();
+
+       //append 0 to the front of empty list
+       if(lex.length() == 0) lex.append(0);
+
+       for(int i = 1; i < lineArray.length; i++){
+	   String tmp = lineArray[i];
+           int j = i - 1;
+	   lex.moveTo(j);
+           while((j > -1) && (tmp.compareTo(lineArray[lex.getElement()]) > 0)){
+		   lex.moveNext();
+		   j++;
+		   }
+	   if(lex.getIndex() == -1){
+	       lex.prepend(i);
+	   } else {
+	       lex.append(i);
+	   }
+	 } return lex;
+  }
+} 
+

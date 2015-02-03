@@ -1,0 +1,37 @@
+Ryan Brounley, (ID: 1360826)
+CMPS 101, Winter 2015
+Programming Assignment 2
+---------------------------------
+Included Files:
+---------------------------------
+List.c
+
+ List.c is a doubly linked list ADT module that is contains many different function to manipulate
+ and Access the node/List constructors. It is used throughly in testing by ListClient and used to 
+ sort the string array in Lex lexographically.
+
+ListClient.c
+ 
+ Supplied by Professor Tantalo, this class exists to test the functionality and performance
+ of the List ADT.
+
+Lex.c
+ 
+ Written by Ryan Brounley, it takes two args and sorts one into a string array and then runs it through my lexSort function which uses the ADT module of List.java to sort the strings by their indecies into 
+ lexographic order.
+ 
+List.h
+ 
+ Written by Ryan Brounley, contains all of the methods in List.c. Connects all of the methods from List.c t the other methods in the Lex and ListClient.
+
+Makefile
+
+  The makefile contains the full running commanding to compile all of the classes together. Given to 
+  us by Professor Tantalo. 
+
+README
+
+ This.
+---------------------------------
+NOTES:
+Have a good week! Good luck with midterms!

@@ -1,0 +1,249 @@
+import java.util.*;
+
+public class List{
+
+  private class Node{
+	int data;
+	Node prev;
+	Node next;
+	//Constructor
+	Node(int data){
+		this.data = data;
+		next = null; 
+		prev = null;
+	}
+	public String toString() { 
+		return String.valueOf(data); }
+  }
+
+  private Node front;
+  private Node curr;
+  private Node back;
+  private int length;
+
+  //Constructor
+  List(){
+	front = curr = back = null;
+	length = 0;
+  } 
+	
+  //Access functions
+  //Returns length of the this
+  int length(){
+      if(front == null) return 0;
+      else 
+	  return this.length; 
+  }
+	
+  int getIndex(){
+    Node A = front;
+    int count = 0;
+    if( curr != null){
+      if(curr.data == A.data){ return (count + 1); }
+      while( A != null){
+        count++;
+        if( curr.data == A.next.data){
+          return count; 
+        }
+        A = A.next;  
+        }  
+     }return -1;
+  }
+     
+  
+
+  int front(){
+      Node A = front;
+      if(this.length() > 0) return A.data;
+      else 
+	throw new RuntimeException("this Error: front() called on empty list");
+  }
+
+  int back(){ 
+      Node B = back;
+      if(this.length() > 0) return B.data;
+      else
+	  throw new RuntimeException("this Error: back() called on empty list");
+  }
+
+  int getElement(){
+      if((this.getIndex() > -1) && (this.length() > 0)) return curr.data;
+      else
+	  throw new RuntimeException("this Error: getElement() called on empty list");
+  }
+
+  boolean equals(List L){
+      boolean equalsflag = true;
+      Node A = this.front;
+      Node B = L.front;
+
+      if(this.length() == L.length()){
+	  while(equalsflag && A!= null){
+	      equalsflag = (A.data == B.data);
+	      A = A.next;
+	      B = B.next;
+	  }
+	  return equalsflag;}
+      else{
+	  return false;
+      }
+  }
+
+  //Manipulation procedure
+  void clear(){
+      if(front == null) return;
+      else{
+	  front.next = null;
+	  front = null;
+	  length = 0;
+      }
+  }
+
+  void moveTo(int i){
+      Node cursor = front;
+      if ((0 <= i) && (i <= (this.length() - 1))){
+	 int newcounter = 0;
+	 while(newcounter < i){
+	 	cursor = cursor.next;
+		newcounter++;
+	 }
+	 curr = cursor;
+      } else {
+	 curr = null;
+      }
+  } 
+	  
+  void movePrev(){ 
+     Node A;
+     if((this.length() == 0)||(this.curr == null))
+	throw new RuntimeException("this Error: movePrev() called on empty list");
+     else{ 
+	A = curr;
+	curr = A.prev;
+}
+  }
+
+  void moveNext(){
+     Node A;
+     if(this.length() == 0)
+	throw new RuntimeException("this Error: moveNext() called on empty list");
+     else{
+	A = curr;
+	curr = A.next;}
+  }
+
+  void prepend(int data){
+      Node tmp;
+      Node node = new Node(data);
+      if(this.length() == 0)
+	  front = back = node;
+      else{
+	  tmp = front;
+	  tmp.prev = node;
+          front = node;
+	  front.next = tmp;
+      }
+      length++;
+  }
+
+  void append(int data){
+      Node tmp;
+      Node node = new Node(data);
+      if(this.length() == 0){ 
+	  front = back = node;}
+      else{
+	  tmp = back;
+	  tmp.next = node;
+	  back = node;
+	  back.prev = tmp;
+      }
+      this.length++;
+  }
+
+  void insertBefore(int data){
+	if(this.length() == 0){
+		throw new RuntimeException("this Error: insertBefore() called on empty list");
+	}
+	length++;
+	Node before = new Node(data);
+	before.next = curr;
+	if(curr != front){
+		curr.prev.next = before;
+		before.prev = curr.next;
+	}
+	curr.prev = before;
+	if(curr == back) front = before;
+  }
+
+  void insertAfter(int data){
+	if(this.length() == 0){
+		throw new RuntimeException("this Error: insertAfter() called on empty list");
+	}
+	length++;
+	Node after = new Node(data);
+	after.prev = curr;
+	if(curr != back){
+		curr.next.prev = after;
+		after.next = curr.next;
+	}
+	curr.next = after;
+
+	if(curr == back) back = after;
+  }
+
+  void deleteFront(){
+      if(this.length() == 0) 
+	  throw new RuntimeException("this Error: deleteFront() called on empty this"); 
+      if(this.length() > 1){
+	  front = front.next;
+	  front.prev = null;}
+      else{
+	  front = back = null;}
+      length--;
+  }
+	
+  void deleteBack(){
+      if(this.length() == 0) 
+	  throw new NoSuchElementException();
+      else{
+	  back = back.prev;
+          back.next = null;
+          }
+  }
+
+  void delete(){
+      if(this.length() <= 0 && this.getIndex() < 0) 
+	  throw new NoSuchElementException();
+      else{
+	  Node temp = curr.prev;
+	  temp.next = curr.next;
+	  if(temp != null){
+	      curr = curr.next;
+	      curr.prev = temp;
+	  }
+      }
+  }
+
+  //Other methods
+      public String toString(){
+	  String str = "";
+	  for(Node N = front; N != null; N = N.next){
+	      str += N.toString() + " ";
+	  }
+	  return str;
+      }
+
+      List copy(){
+	  List cpy = new List();
+	  Node A = this.front;
+
+	  while(A != null){
+	      cpy.append(A.data);
+	      A = A.next;
+	  }
+	  return cpy;
+      }
+}
+//  this concat(this L) //Future assignment but not required to make work.
+
+
