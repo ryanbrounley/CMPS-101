@@ -1,8 +1,8 @@
 //Ryan Brounley
 //CMPS 101
-//
+//MatrixTest.java
 
-public class MatrixClient{
+public class MatrixTest{
    public static void main(String[] args){
       int i, j, n=10000;
       Matrix A = new Matrix(n);
@@ -52,7 +52,6 @@ public class MatrixClient{
       System.out.println(F.getNNZ());
       System.out.println(F);
 
-
       F = B.transpose();
       System.out.println(F.getNNZ());
       System.out.println(F);
@@ -64,7 +63,6 @@ public class MatrixClient{
       Matrix H = A.copy();
       System.out.println(H.getNNZ());
       System.out.println(H);
-      System.out.println(A.equals(H));
       System.out.println(A.equals(B));
       System.out.println(A.equals(A));
 

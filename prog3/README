@@ -1,0 +1,42 @@
+Ryan Brounley
+CMPS 101, Winter 2015
+Programming Assignment 3
+Sparse Matrix
+---------------------------------
+Included Files:
+---------------------------------
+List.java
+
+ List.java is a doubly linked list ADT module that is contains many different function to manipulate
+ and Access the node/List constructors. The list contains objects as specified in the Matrix ADT containing
+ columns and values. 
+
+ListTest.java
+ 
+ Similar to the ListClient supplied by Professor Tantalo, this class exists to test the functionality and performance
+ of the List ADT.
+
+Matrix.java
+ 
+ Written by Ryan Brounley, this file contains the Matrix ADT which has all of the manipulation and access features that 
+ create and scalar,add,sub,transpose,and mult the matrix 
+ 
+MatrixTest.java
+
+ This is a modified version of the MatrixClient which contains more functions that show that the ADT methods actually
+ do what they are supposed to do. I edited this as I was making Matrix ADT so it tests harshly to ensure my code was correct
+
+Sparse.java
+
+ This is the file that makes the two matrices and prints out the output from the assignment prompt. It writes the output into a  from a file in args[1] and into a file in args[2]
+
+Makefile
+
+  The makefile contains the full running commanding to compile all of the classes together. Given to 
+  us by Professor Tantalo. 
+
+README
+ This.
+---------------------------------
+NOTES:
+Hope you had a great three day weekend!!
