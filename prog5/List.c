@@ -1,5 +1,6 @@
 //Ryan Brounley
-//CMPS 101 Tantalo
+//CMPS 101 Professor Tantalo
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -50,7 +51,6 @@ void freeList(List *pL) {
 	if(pL==NULL || *pL==NULL) {
 		return;
 	}
-
 	clear(*pL);
 	free(*pL);
 	*pL = NULL;
@@ -122,18 +122,16 @@ int equals(List A, List B){
 
 // Re-sets this List to the empty state.
 void clear(List L){
-    if(L->front == NULL) return;
-    else{
-        Node fronttmp = L->front;
-        while(fronttmp != NULL){
-           Node tmp = fronttmp->next;
-           free(fronttmp);
-           fronttmp = tmp;
-    }
+    if(L->front == NULL){
+//		fprintf(stderr, "Clearing empty list clear()");
+		exit(1);}	
+    while(L->front != NULL){
+          deleteFront(L);
+        }
     L->front = L->back = L->curr = NULL;
     L->length = 0;
-    }
 }
+
 
 // If 0<=i<=length()-1, moves the curr to the element
 // at index i, otherwise the curr becomes undefined.
@@ -153,12 +151,12 @@ void moveTo(List L, int i){
 
 // Moves the curr one step towards the front of the list
 void movePrev(List L){
-    Node a;
     if((length(L) == 0)||(L->curr == NULL)){
         //opposite if for the preconditions^
         fprintf(stderr,"Empty list movePrev()");
         exit(EXIT_FAILURE);
     }else{
+      Node a;
       a = L->curr;
       L->curr = a->prev;
     }
@@ -166,11 +164,11 @@ void movePrev(List L){
 
 // Moves the curr one step toward the back of the list
 void moveNext(List L){
-     Node a;
      if(length(L) == 0){ 
         fprintf(stderr,"empty List moveNext()");
         exit(EXIT_FAILURE);
      }else{
+        Node a;
         a = L->curr;
         L->curr = a->next;
      }
@@ -197,7 +195,7 @@ void prepend(List L, int data){
 //inserts element to back fo the list
 void append(List L, int data){
     if(L == NULL){
-        fprintf(stderr,"error L == NULL prepend");
+        fprintf(stderr,"error L == NULL append\n");
         return;}
      Node n = malloc(sizeof(struct NodeObj));
      n->data = data;
@@ -215,7 +213,7 @@ void append(List L, int data){
 //Inserts new element before the curr element
 void insertBefore(List L, int data){
   
-   if ( length(L) != 0 && getIndex(L) != -1 ){
+   if(length(L) != 0 && getIndex(L) != -1 ){
       if (getIndex(L) == 1){
          prepend(L, data);
          return;

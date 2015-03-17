@@ -1,0 +1,41 @@
+CMPS 101, Winter 2015
+Programming Assignment 2
+---------------------------------
+Included Files:
+---------------------------------
+List.c
+
+ List.c is a doubly linked list ADT module that is contains many different function to manipulate
+ and Access the node/List constructors. 
+
+GraphTest.c
+ 
+ A variation of GraphClient.c supplied by Professor Tantalo, this class exists to test the functionality and performance of the Graph ADT.
+
+GetComponents.c
+ 
+ Written by Ryan Brounley, it takes two args and reads the input file for a verticie count and adds all the edge values. Then it runs DFS on an original then on the transpose with the original DFS stack and prints the strongly connected components. 
+ 
+List.h
+ 
+ Written by Ryan Brounley, contains all of the methods in List.c. Connects all of the methods from List.c to Graph.c and FindPath.c.
+
+Graph.h
+ 
+ Written by Ryan Brounley, contains all of the methods in Graph.c. Connects all of the methods from Graph.c to List.c and GetComponents.c.
+
+Graph.c
+
+ Written by Ryan Brounley, contains all of the methods of the Graph ADT used to manipulate and create the graph algorithm. Also contains the Depth First Search algorithm used throughout the program.
+
+Makefile
+
+  The makefile contains the full running commanding to compile all of the classes together. Given to 
+  us by Professor Tantalo. 
+
+README
+
+ This.
+---------------------------------
+NOTES:
+Have a good week! Good luck with Finals!
